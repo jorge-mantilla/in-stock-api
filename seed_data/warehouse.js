@@ -1,6 +1,6 @@
-const knex = require('knex')(require('../knexfile'));
 
 exports.seed = async function (knex) {
+    console.log("KNEX PARAM",knex);
     // Deletes ALL existing entries
     await knex('warehouses').del();
     await knex('warehouses').insert([
