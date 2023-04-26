@@ -4,6 +4,9 @@ const cors = require('cors');
 const PORT = process.env.PORT || 5051;
 // const inventoryRoutes = require('./routes/inventoryRoute');
 const warehouseRoutes = require('./routes/warehouseRoute');
+const inventoryRoutes = require('./routes/inventoryRoute');
+
+app.use('/inventories', inventoryRoutes);
 
 app.use(cors());
 app.use(express.json());
