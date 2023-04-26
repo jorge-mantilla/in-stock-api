@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5050;
-const inventoryRoutes = require('./routes/inventoryRoute');
+const PORT = process.env.PORT || 5051;
+// const inventoryRoutes = require('./routes/inventoryRoute');
 const warehouseRoutes = require('./routes/warehouseRoute');
 
 app.use(express.json());

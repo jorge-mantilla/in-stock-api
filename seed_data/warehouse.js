@@ -6,7 +6,7 @@ exports.seed = async function (knex) {
     // Deletes ALL existing entries
     await knex('warehouses').del();
     await knex('warehouses').insert([
-      {
+    {
         id: '2922c286-16cd-4d43-ab98-c79f698aeab0',
         warehouse_name: 'Manhattan',
         address: '503 Broadway',
@@ -16,8 +16,8 @@ exports.seed = async function (knex) {
         contact_position: 'Warehouse Manager',
         contact_phone: '+1 (646) 123-1234',
         contact_email: 'paujla@instock.com',
-      },
-      {
+    },
+    {
         id: '5bf7bd6c-2b16-4129-bddc-9d37ff8539e9',
         warehouse_name: 'Washington',
         address: '33 Pearl Street SW',
@@ -27,8 +27,8 @@ exports.seed = async function (knex) {
         contact_position: 'Warehouse Manager',
         contact_phone: '+1 (646) 123-1234',
         contact_email: 'glyon@instock.com',
-      },
-      {
+    },
+    {
         id: '90ac3319-70d1-4a51-b91d-ba6c2464408c',
         warehouse_name: 'Jersey',
         address: '300 Main Street',
@@ -38,8 +38,8 @@ exports.seed = async function (knex) {
         contact_position: 'Warehouse Manager',
         contact_phone: '+1 (646) 123-1234',
         contact_email: 'bmcdonald@instock.com',
-      },
-      {
+    },
+    {
         id: 'bfc9bea7-66f1-44e9-879b-4d363a888eb4',
         warehouse_name: 'SF',
         address: '890 Brannnan Street',
@@ -49,8 +49,8 @@ exports.seed = async function (knex) {
         contact_position: 'Warehouse Manager',
         contact_phone: '+1 (646) 123-1234',
         contact_email: 'gwong@instock.com',
-      },
-      {
+    },
+    {
         id: '89898957-04ba-4bd0-9f5c-a7aea7447963',
         warehouse_name: 'Santa Monica',
         address: '520 Broadway',
