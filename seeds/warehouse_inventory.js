@@ -1,11 +1,12 @@
 const inventoryData = require('../seed_data/inventory');
 const warehouseData = require('../seed_data/warehouse');
+const knex = require('knex')(require('../knexfile'));
 
 exports.seed = function (knex) {
-  return knex('warehouse')
+  return knex('warehouses')
     .del()
     .then(function () {
-      return knex('warehouse').insert(warehouseData);
+      return knex('warehouses').insert(warehouseData);
     })
     .then(() => {
       return knex('inventory').del();

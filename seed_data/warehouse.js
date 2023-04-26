@@ -1,7 +1,5 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+const knex = require('knex')(require('../knexfile'));
+
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
     await knex('warehouses').del();
