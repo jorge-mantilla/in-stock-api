@@ -8,9 +8,12 @@ router.route('/').post(warehouseController.addWarehouse);
 router
     .route('/:id')
     .get(warehouseController.singleWarehouse)
-    .delete(warehouseController.deleteWarehouse)
-    .put(warehouseController.updateWarehouse);
+    .delete(warehouseController.deleteWarehouse);
 
+router
+    .route('/:id/inventories')
+    .get(warehouseController.warehouseInventories)
+    .put(warehouseController.updateWarehouse);
 
 module.exports = router;
 
