@@ -10,6 +10,7 @@ const inventoryRoutes = require('./routes/inventoryRoute');
 app.use(cors());
 app.use(express.json());
 
+
 app.use('/warehouses', warehouseRoutes);
 app.use('/inventories', inventoryRoutes);
 
