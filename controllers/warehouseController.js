@@ -75,7 +75,7 @@ exports.warehouseInventories = (req, res) => {
                 .send(
                     `Error retrieving inventories for Warehouse ${req.params.id} ${err}`
                 )
-  );
+  )};
 
 exports.updateWarehouse = (req, res) => {
     const { email, phone } = req.body;
@@ -100,3 +100,4 @@ exports.updateWarehouse = (req, res) => {
         res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`);
     });
 };
+}
