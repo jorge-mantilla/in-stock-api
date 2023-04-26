@@ -55,4 +55,5 @@ exports.deleteWarehouse = (req, res) => {
     })
     .catch((err) =>
     res.status(400).send(`Error deleting Warehouse ${req.params.id} ${err}`)
-    );
+    )};
+
