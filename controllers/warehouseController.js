@@ -1,12 +1,12 @@
-const knex = require('knex')(require('../knexfile'));
+const knex = require("knex")(require("../knexfile"));
 
 exports.index = (_req, res) => {
-    knex('warehouses')
-        // .select('id', 'city', 'country')
-        .then((data) => {
-            res.status(200).json(data);
-        })
-        .catch((err) => res.status(400).send(`Error retrieving Warehouses ${err}`));
+  knex("warehouses")
+    // .select('id', 'city', 'country')
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(400).send(`Error retrieving Warehouses ${err}`));
 };
 
 exports.singleWarehouse = (req, res) => {
@@ -22,9 +22,8 @@ exports.singleWarehouse = (req, res) => {
         })
         .catch((err) =>
             res.status(400).send(`Error retrieving warehouse ${req.params.id} ${err}`)
-        );
-};
-
+  );
+  
 //post
 exports.addWarehouse = (req, res) => {
     // Validate the request body for required data
@@ -56,8 +55,8 @@ exports.deleteWarehouse = (req, res) => {
             res.status(400).send(`Error deleting Warehouse ${req.params.id} ${err}`)
         )
 };
-
 //GET Inventories for a Given Warehouse
+
 exports.warehouseInventories = (req, res) => {
     knex('inventories')
         .where({ warehouse_id: req.params.id })
@@ -76,5 +75,28 @@ exports.warehouseInventories = (req, res) => {
                 .send(
                     `Error retrieving inventories for Warehouse ${req.params.id} ${err}`
                 )
-        );
+  );
+
+exports.updateWarehouse = (req, res) => {
+    const { email, phone } = req.body;
+
+    if (!email || !email.includes("@")) {
+    return res.status(400).send(`Invalid email: ${email}`);
+}
+
+    if (!phone || !/^\d{10,}$/.test(phone)) {
+    return res.status(400).send(`Invalid phone number: ${phone}`);
+}
+
+    knex("warehouse")
+    .update(req.body)
+    .where({ id: req.params.id })
+    .then(() => {
+        res
+        .status(200)
+        .send(`Warehouse with id: ${req.params.id} has been updated`);
+    })
+    .catch((err) => {
+        res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`);
+    });
 };
