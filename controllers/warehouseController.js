@@ -17,13 +17,32 @@ exports.singleWarehouse = (req, res) => {
             if (!data.length) {
                 return res.status(404).send(`Record with id: ${req.params.id} is not found`);
             }
+    // Knex returns an array of records, so we need to send response with a single object only
+    res.status(200).json(data[0]);
+    })
+    .catch((err) =>
+    res.status(400).send(`Error retrieving warehouse ${req.params.id} ${err}`)
+    );
+};
 
-            // Knex returns an array of records, so we need to send response with a single object only
-            res.status(200).json(data[0]);
-        })
-        .catch((err) =>
-            res.status(400).send(`Error retrieving warehouse ${req.params.id} ${err}`)
-        );
+//post
+exports.addWarehouse = (req, res) => {
+    // Validate the request body for required data
+    if (!req.body.warehouse_name || !req.body.address || !req.body.city ||
+        !req.body.country || !req.body.contact_name|| !req.body.contact_position || 
+        !req.body.contact_phone || !req.body.contact_email)
+        {
+    return res.status(400).send('Please make sure to provide name, manager, address, phone and email fields in a request');
+    }
+
+    knex('warehouses')
+        .insert(req.body)
+        .then((data) => {
+        // For POST requests we need to respond with 201 and the location of the newly created record
+        const newWarehouseURL = `/warehouses/${data[0]}`;
+        res.status(201).location(newWarehouseURL).send(newWarehouseURL);
+    })
+    .catch((err) => res.status(400).send(`Error creating Warehouse: ${err}`));
 };
 
 exports.deleteWarehouse = (req, res) => {
@@ -37,4 +56,3 @@ exports.deleteWarehouse = (req, res) => {
     .catch((err) =>
     res.status(400).send(`Error deleting Warehouse ${req.params.id} ${err}`)
     );
-};
