@@ -54,4 +54,17 @@ exports.addInventory = (req, res) => {
       .catch((err) => res.status(400).send(`Error creating Inventory: ${err}`));
   };
 
- 
+
+//To delete an existing inventory using DELETE
+exports.deleteInventory = (req, res) => {
+    knex('inventories')
+      .delete()
+      .where({ id: req.params.id })
+      .then(() => {
+        // For DELETE response we can use 204 status code
+        res.status(204).send(`Inventory with id: ${req.params.id} has been deleted`);
+      })
+      .catch((err) =>
+        res.status(400).send(`Error deleting Inventory ${req.params.id} ${err}`)
+      );
+  };

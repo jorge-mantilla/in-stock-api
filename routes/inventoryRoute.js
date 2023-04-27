@@ -9,6 +9,6 @@ router
 router
     .route('/:id')
     .get(inventoryController.singleInventory)
-    
+    .delete(inventoryController.deleteInventory);
 
 module.exports = router;
