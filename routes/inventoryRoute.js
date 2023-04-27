@@ -5,6 +5,8 @@ router.route('/').get(inventoryController.index);
 
 router
     .route('/:id')
-    .get(inventoryController.singleInventory);
+    .get(inventoryController.singleInventory)
+    .delete(inventoryController.deleteInventory);
+
 
 module.exports = router;
