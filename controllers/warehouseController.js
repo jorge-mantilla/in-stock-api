@@ -23,7 +23,7 @@ exports.singleWarehouse = (req, res) => {
         .catch((err) =>
             res.status(400).send(`Error retrieving warehouse ${req.params.id} ${err}`)
   );
-  
+    }; 
 //post
 exports.addWarehouse = (req, res) => {
     // Validate the request body for required data
@@ -100,4 +100,3 @@ exports.updateWarehouse = (req, res) => {
         res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`);
     });
 };
-}
