@@ -88,6 +88,9 @@ exports.updateWarehouse = (req, res) => {
       res.status(400).send(`Error updating Warehouse ${req.params.id} ${err}`)
     );
 };
+
+
+
 //     const { email, phone } = req.body;
 
 // //     if (!email || !email.includes("@")) {
