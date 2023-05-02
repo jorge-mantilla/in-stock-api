@@ -16,4 +16,4 @@ exports.seed = function (knex) {
     });
 };
 
-//check
+//check it
